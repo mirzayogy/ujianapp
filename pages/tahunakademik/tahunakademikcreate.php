@@ -3,24 +3,27 @@ require_once('assets/lib/connection.php');
 
 if(isset($_POST['simpan'])){
   $pesanError=array();
-  $prodi = isset($_POST["prodi"]) ? $_POST["prodi"] : "";
+  $tahunakademik = isset($_POST["tahunakademik"]) ? $_POST["tahunakademik"] : "";
+  $semester = isset($_POST["semester"]) ? $_POST["semester"] : "";
   $singkatan = isset($_POST["singkatan"]) ? $_POST["singkatan"] : "";
 
-  $prodi=htmlspecialchars(strip_tags($prodi));
+  $tahunakademik=htmlspecialchars(strip_tags($tahunakademik));
+  $semester=htmlspecialchars(strip_tags($semester));
   $singkatan=htmlspecialchars(strip_tags($singkatan));
 
   $database = new Database();
   $db = $database->getConnection();
 
-  $checkQuery = "SELECT * FROM programstudi WHERE prodi=?";
+  $checkQuery = "SELECT * FROM tahunakademik WHERE tahun=? AND semester=?";
   $stmt = $db->prepare($checkQuery);
-  $stmt->bindParam(1, $prodi);
+  $stmt->bindParam(1, $tahunakademik);
+  $stmt->bindParam(2, $semester);
   $stmt->execute();
   if($stmt->rowCount()>0){
-    $pesanError[] = "Data <strong>prodi</strong> sama sudah ada";
+    $pesanError[] = "Data <strong>Tahun Akademik Semester</strong> sama sudah ada";
   }
 
-  $checkQuery = "SELECT * FROM programstudi WHERE singkatan=?";
+  $checkQuery = "SELECT * FROM tahunakademik WHERE singkatan=?";
   $stmt = $db->prepare($checkQuery);
   $stmt->bindParam(1, $singkatan);
   $stmt->execute();
@@ -39,11 +42,12 @@ if(isset($_POST['simpan'])){
       <?php
     }
   }else{
-    $query = "INSERT INTO programstudi (prodi,singkatan) VALUES (?,?)";
+    $query = "INSERT INTO tahunakademik (tahun,semester,singkatan) VALUES (?,?,?)";
     $stmt = $db->prepare($query);
 
-    $stmt->bindParam(1, $prodi);
-    $stmt->bindParam(2, $singkatan);
+    $stmt->bindParam(1, $tahunakademik);
+    $stmt->bindParam(2, $semester);
+    $stmt->bindParam(3, $singkatan);
 
     if($stmt->execute()){
       ?>
@@ -55,13 +59,14 @@ if(isset($_POST['simpan'])){
   }
 }
 
-$prodi = isset($_POST["prodi"]) ? $_POST["prodi"] : "";
+$tahunakademik = isset($_POST["tahunakademik"]) ? $_POST["tahunakademik"] : "";
+$semester = isset($_POST["semester"]) ? $_POST["semester"] : "";
 $singkatan = isset($_POST["singkatan"]) ? $_POST["singkatan"] : "";
 
 ?>
 
 <div class="block-header">
-  <h2><a href="programstudi">PROGRAM STUDI</a> > CREATE</h2>
+  <h2><a href="tahunakademik">TAHUN AKADEMIK</a> > CREATE</h2>
 </div>
 <div class="row clearfix">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -77,17 +82,26 @@ $singkatan = isset($_POST["singkatan"]) ? $_POST["singkatan"] : "";
             <form id="myForm" method="POST">
               <div class="form-group form-float">
                 <div class="form-line">
-                  <input type="text" class="form-control" name="prodi" maxlength="200" minlength="3" required value="<?php echo $prodi ?>">
-                  <label class="form-label">Program Studi</label>
+                  <input type="text" class="form-control" name="tahunakademik" pattern="[0-9]{13,16}" maxlength="200" minlength="3" required value="<?php echo $tahunakademik ?>">
+                  <label class="form-label">Tahun</label>
                 </div>
-                <div class="help-info">Nama Program Studi</div>
+                <div class="help-info">Tahun akademik</div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
-                  <input type="text" class="form-control" name="singkatan" maxlength="3" minlength="2" required value="<?php echo $singkatan ?>">
+                  <input type="radio" name="semester" id="radio_ganjil" class="radio-col-indigo" value="GANJIL" <?php echo ($semester=="GANJIL")?" checked":"" ?>>
+                  <label for="radio_ganjil">GANJIL</label>
+                  <input type="radio" name="semester" id="radio_genap" class="radio-col-indigo" value="GENAP"  <?php echo ($semester=="GENAP")?" checked":"" ?>>
+                  <label for="radio_genap">GENAP</label>
+                </div>
+                <div class="help-info">Semester</div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <input type="text" class="form-control" name="singkatan" maxlength="3" minlength="3" required value="<?php echo $singkatan ?>">
                   <label class="form-label">Singkatan</label>
                 </div>
-                <div class="help-info">Singkatan Program Studi, minimal 2 karakter</div>
+                <div class="help-info">Singkatan Tahun Akademik, 3 karakter</div>
               </div>
               <button class="btn bg-indigo btn-circle waves-effect waves-circle waves-float pull-right" type="submit" name="simpan" >
                 <i class="material-icons">save</i>
@@ -101,4 +115,4 @@ $singkatan = isset($_POST["singkatan"]) ? $_POST["singkatan"] : "";
 </div>
 
 <script src="plugins/jquery-validation/jquery.validate.js"></script>
-<script src="assets/js/pages/programstudi.js"></script>
+<script src="assets/js/pages/tahunakademik.js"></script>

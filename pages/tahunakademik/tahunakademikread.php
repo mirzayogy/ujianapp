@@ -7,7 +7,7 @@ $db = $database->getConnection();
 ?>
 
 <div class="block-header">
-  <h2>PROGRAM STUDI</h2>
+  <h2>TAHUN AKADEMIK</h2>
 </div>
 <div class="row clearfix">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -19,7 +19,7 @@ $db = $database->getConnection();
         <ul class="header-dropdown m-r--5">
 
           <li class="dropdown">
-            <a href="programstudicreate" class="btn bg-indigo btn-circle-lg waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="tahunakademikcreate" class="btn bg-indigo btn-circle-lg waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">add</i>
             </a>
           </li>
@@ -31,20 +31,22 @@ $db = $database->getConnection();
             <thead>
               <tr>
                 <th width="20%">Opsi</th>
-                <th width="70%">Program Studi</th>
+                <th width="35%">Tahun</th>
+                <th width="35%">Semester</th>
                 <th width="10%">Singkatan</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th width="20%">Opsi</th>
-                <th width="70%">Program Studi</th>
+                <th width="35%">Tahun</th>
+                <th width="35%">Semester</th>
                 <th width="10%">Singkatan</th>
               </tr>
             </tfoot>
             <tbody>
               <?php
-              $selectQuery = "SELECT * FROM programstudi";
+              $selectQuery = "SELECT * FROM tahunakademik";
               $stmt = $db->prepare($selectQuery);
               $stmt->execute();
               if($stmt->rowCount()>0){
@@ -54,7 +56,7 @@ $db = $database->getConnection();
                   <tr style="vertical-align:bottom">
                     <td>
                       <div class="form-row">
-                        <form action="programstudiupdate" method="post">
+                        <form action="tahunakademikupdate" method="post">
                           <button class="btn bg-blue btn-xs waves-effect update-button" type="submit" name="update" value="<?php echo $id ?>">
                             <i class="material-icons">edit</i>
                           </button>
@@ -65,7 +67,8 @@ $db = $database->getConnection();
                         </button>
                       </div>
                     </td>
-                    <td><?php echo $prodi ?></td>
+                    <td><?php echo $tahun ?></td>
+                    <td><?php echo $semester ?></td>
                     <td><?php echo $singkatan ?></td>
                   </tr>
                   <?php
@@ -80,4 +83,4 @@ $db = $database->getConnection();
   </div>
 </div>
 
-<script src="assets/js/pages/programstudi.js"></script>
+<script src="assets/js/pages/tahunakademik.js"></script>

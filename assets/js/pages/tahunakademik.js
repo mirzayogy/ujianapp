@@ -4,8 +4,8 @@ $(function () {
       'date': {
         customdate: true
       },
-      'creditcard': {
-        creditcard: true
+      'tahunakademik': {
+        tahunakademik: true
       }
     },
     highlight: function (input) {
@@ -29,10 +29,10 @@ $(function () {
 );
 
 //Credit card
-$.validator.addMethod('creditcard', function (value, element) {
-  return value.match(/^\d\d\d\d?-\d\d\d\d?-\d\d\d\d?-\d\d\d\d$/);
+$.validator.addMethod('tahunakademik', function (value, element) {
+  return value.match(/^\d\d\d\d?-\d\d\d\d$/);
 },
-'Please enter a credit card in the format XXXX-XXXX-XXXX-XXXX.'
+'Masukan dengan format format XXXX-XXXX.'
 );
 //==================================================================================================
 
@@ -55,13 +55,13 @@ $(document).on('click', '.delete-button', function(){
         var data_send = {id:id};
         var datas = JSON.stringify(data_send);
         $.ajax({
-          url: MAIN_URL+"pages/programstudi/programstudidelete.php",
+          url: MAIN_URL+"pages/tahunakademik/tahunakademikdelete.php",
           type : "POST",
           contentType : 'application/json',
           data : datas,
           success : function(result){
             bootbox.alert("Hapus data berhasil",function(){
-              window.location.replace(MAIN_URL+"programstudi");
+              window.location.replace(MAIN_URL+"tahunakademik");
             });
           },
           error: function(xhr, resp, text){

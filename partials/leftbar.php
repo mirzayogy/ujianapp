@@ -60,7 +60,10 @@
         </a>
       </li>
       <li <?php
-      if($page=="programstudi" || $page=="programstudicreate" ) {
+      if(
+        $page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate" ||
+        $page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate"
+      ) {
         echo 'class="active"';
       }?>
       >
@@ -69,12 +72,17 @@
         <span>Masters</span>
       </a>
       <ul class="ml-menu">
-        <li>
-          <a href="pages/widgets/cards/no-header.html">Tahun Akademik</a>
+        <li
+        <?php
+        if($page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate") {
+          echo 'class="active"';
+        }?>
+        >
+          <a href="tahunakademik">Tahun Akademik</a>
         </li>
         <li
         <?php
-        if($page=="programstudi" || $page=="programstudicreate" ) {
+        if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
           echo 'class="active"';
         }?>
         >

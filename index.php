@@ -79,13 +79,14 @@
 
   <script src="plugins/jquery-countto/jquery.countTo.js"></script>
   <script src="plugins/raphael/raphael.min.js"></script>
-  <script src="plugins/morrisjs/morris.js"></script>
   <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
   <script src="plugins/bootbox/bootbox.min.js"></script>
 
   <script type="text/javascript">
-  $('.js-basic-example').DataTable();
+  $('.js-basic-example').DataTable({
+    "lengthChange": false
+  });
   $('.js-exportable').DataTable();
   </script>
 
