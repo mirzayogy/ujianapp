@@ -41,29 +41,12 @@
           <span>Home</span>
         </a>
       </li>
-      <li <?php if($page=="crawler") echo 'class="active"'; ?>>
-        <a href="crawler">
-          <i class="material-icons">pageview</i>
-          <span>Crawler</span>
-        </a>
-      </li>
-      <li id="li_input">
-        <a href="input">
-          <i class="material-icons">input</i>
-          <span>Input</span>
-        </a>
-      </li>
-      <li id="li_test">
-        <a href="#test">
-          <i class="material-icons">assignment</i>
-          <span>Test</span>
-        </a>
-      </li>
       <li <?php
       if(
         $page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate" ||
         $page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate" ||
-        $page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate"
+        $page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate" ||
+        $page=="dosen" || $page=="dosencreate" || $page=="dosenupdate"
       ) {
         echo 'class="active"';
       }?>
@@ -79,26 +62,33 @@
           echo 'class="active"';
         }?>
         >
-          <a href="tahunakademik">Tahun Akademik</a>
-        </li>
-        <li
-        <?php
-        if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
-          echo 'class="active"';
-        }?>
-        >
-        <a href="programstudi">Program Studi</a>
+        <a href="tahunakademik">Tahun Akademik</a>
       </li>
       <li
       <?php
-      if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
+      if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
         echo 'class="active"';
       }?>
       >
-        <a href="matakuliah">Mata Kuliah</a>
-      </li>
-    </ul>
+      <a href="programstudi">Program Studi</a>
+    </li>
+    <li
+    <?php
+    if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
+      echo 'class="active"';
+    }?>
+    >
+    <a href="matakuliah">Mata Kuliah</a>
+    <li
+    <?php
+    if($page=="dosen" || $page=="dosencreate" || $page=="dosenupdate") {
+      echo 'class="active"';
+    }?>
+    >
+    <a href="dosen">Dosen</a>
   </li>
+</ul>
+</li>
 </ul>
 </div>
 <!-- #Menu -->
