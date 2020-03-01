@@ -41,61 +41,59 @@
           <span>Home</span>
         </a>
       </li>
-      <li <?php
-      if(
+      <li <?php if($page=="jadwalkuliah" || $page=="jadwalkuliahpilih") echo 'class="active"'; ?>>
+        <a href="jadwalkuliah">
+          <i class="material-icons">chrome_reader_mode</i>
+          <span>Jadwal Kuliah</span>
+        </a>
+      </li>
+      <li <?php if(
         $page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate" ||
         $page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate" ||
         $page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate" ||
-        $page=="dosen" || $page=="dosencreate" || $page=="dosenupdate"
-      ) {
-        echo 'class="active"';
-      }?>
-      >
-      <a href="javascript:void(0);" class="menu-toggle">
-        <i class="material-icons">widgets</i>
-        <span>Masters</span>
-      </a>
-      <ul class="ml-menu">
-        <li
-        <?php
-        if($page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate") {
-          echo 'class="active"';
-        }?>
-        >
-        <a href="tahunakademik">Tahun Akademik</a>
+        $page=="dosen" || $page=="dosencreate" || $page=="dosenupdate" ||
+        $page=="kelas" || $page=="kelascreate" || $page=="kelasupdate"
+      ) { echo 'class="active"';  }?> >
+        <a href="javascript:void(0);" class="menu-toggle">
+          <i class="material-icons">widgets</i>
+          <span>Masters</span>
+        </a>
+        <ul class="ml-menu">
+          <li <?php if($page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate") {
+            echo 'class="active"'; }?>>
+            <a href="tahunakademik">
+              Tahun Akademik
+            </a>
+          </li>
+          <li <?php if($page=="kelas" || $page=="kelascreate" || $page=="kelasupdate") {
+            echo 'class="active"'; }?>>
+            <a href="kelas">
+              Kelas
+            </a>
+          </li>
+          <li  <?php if($page=="dosen" || $page=="dosencreate" || $page=="dosenupdate") {
+            echo 'class="active"'; }?>   >
+            <a href="dosen">Dosen</a>
+          </li>
+          <li <?php if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
+            echo 'class="active"'; }?> >
+            <a href="programstudi">
+              Program Studi
+            </a>
+          </li>
+          <li <?php if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
+            echo 'class="active"'; }?>  >
+            <a href="matakuliah">Mata Kuliah</a>
+          </li>
+        </ul>
       </li>
-      <li
-      <?php
-      if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
-        echo 'class="active"';
-      }?>
-      >
-      <a href="programstudi">Program Studi</a>
-    </li>
-    <li
-    <?php
-    if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
-      echo 'class="active"';
-    }?>
-    >
-    <a href="matakuliah">Mata Kuliah</a>
-    <li
-    <?php
-    if($page=="dosen" || $page=="dosencreate" || $page=="dosenupdate") {
-      echo 'class="active"';
-    }?>
-    >
-    <a href="dosen">Dosen</a>
-  </li>
-</ul>
-</li>
-</ul>
-</div>
+    </ul>
+  </div>
 <!-- #Menu -->
 <!-- Footer -->
 <div class="legal">
   <div class="copyright">
-    &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+    &copy; 2020 <a href="javascript:void(0);">FTI BJB</a>.
   </div>
   <div class="version">
     <b>Version: </b> 1.0.5

@@ -49,6 +49,15 @@ if(isset($_GET['p'])){
 			case 'dosenupdate':
 				include "pages/dosen/dosenupdate.php";
 				break;
+			case 'kelas':
+				include "pages/kelas/kelasread.php";
+				break;
+			case 'kelascreate':
+				include "pages/kelas/kelascreate.php";
+				break;
+			case 'kelasupdate':
+				include "pages/kelas/kelasupdate.php";
+				break;
 
 				//end Admin
 
