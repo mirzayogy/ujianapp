@@ -31,6 +31,15 @@ if(isset($_GET['p'])){
 			case 'tahunakademikupdate':
 				include "pages/tahunakademik/tahunakademikupdate.php";
 				break;
+			case 'matakuliah':
+				include "pages/matakuliah/matakuliahread.php";
+				break;
+			case 'matakuliahcreate':
+				include "pages/matakuliah/matakuliahcreate.php";
+				break;
+			case 'matakuliahupdate':
+				include "pages/matakuliah/matakuliahupdate.php";
+				break;
 			case 'crawler':
 				include "pages/crawler.php";
 				break;

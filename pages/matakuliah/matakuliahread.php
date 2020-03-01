@@ -7,7 +7,7 @@ $db = $database->getConnection();
 ?>
 
 <div class="block-header">
-  <h2>TAHUN AKADEMIK</h2>
+  <h2>MATA KULIAH</h2>
 </div>
 <div class="row clearfix">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -19,7 +19,7 @@ $db = $database->getConnection();
         <ul class="header-dropdown m-r--5">
 
           <li class="dropdown">
-            <a href="tahunakademikcreate" class="btn bg-indigo btn-circle-lg waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="matakuliahcreate" class="btn bg-indigo btn-circle-lg waves-effect waves-circle waves-float" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">add</i>
             </a>
           </li>
@@ -30,23 +30,25 @@ $db = $database->getConnection();
           <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="js-basic-example">
             <thead>
               <tr>
-                <th width="15%">Opsi</th>
-                <th width="35%">Tahun</th>
-                <th width="35%">Semester</th>
-                <th width="15%">Singkatan</th>
+                <th style="width:65px">Opsi</th>
+                <th>Program Studi</th>
+                <th>SMT</th>
+                <th>Mata Kuliah</th>
+                <th>Singkatan</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th width="15%">Opsi</th>
-                <th width="35%">Tahun</th>
-                <th width="35%">Semester</th>
-                <th width="15%">Singkatan</th>
+                <th style="width:65px">Opsi</th>
+                <th>Program Studi</th>
+                <th>SMT</th>
+                <th>Mata Kuliah</th>
+                <th>Singkatan</th>
               </tr>
             </tfoot>
             <tbody>
               <?php
-              $selectQuery = "SELECT * FROM tahunakademik";
+              $selectQuery = "SELECT m.*,p.prodi FROM matakuliah m LEFT JOIN programstudi p ON m.id_prodi = p.id ORDER by p.id, m.semester, m.mata_kuliah";
               $stmt = $db->prepare($selectQuery);
               $stmt->execute();
               if($stmt->rowCount()>0){
@@ -56,7 +58,7 @@ $db = $database->getConnection();
                   <tr style="vertical-align:bottom">
                     <td>
                       <div class="form-row">
-                        <form action="tahunakademikupdate" method="post">
+                        <form action="matakuliahupdate" method="post">
                           <button class="btn bg-blue btn-xs waves-effect update-button" type="submit" name="update" value="<?php echo $id ?>">
                             <i class="material-icons">edit</i>
                           </button>
@@ -67,8 +69,9 @@ $db = $database->getConnection();
                         </button>
                       </div>
                     </td>
-                    <td><?php echo $tahun ?></td>
+                    <td><?php echo $prodi ?></td>
                     <td><?php echo $semester ?></td>
+                    <td><?php echo $mata_kuliah ?></td>
                     <td><?php echo $singkatan ?></td>
                   </tr>
                   <?php
@@ -83,4 +86,4 @@ $db = $database->getConnection();
   </div>
 </div>
 
-<script src="assets/js/pages/tahunakademik.js"></script>
+<script src="assets/js/pages/matakuliah.js"></script>

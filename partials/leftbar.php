@@ -62,7 +62,8 @@
       <li <?php
       if(
         $page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate" ||
-        $page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate"
+        $page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate" ||
+        $page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate"
       ) {
         echo 'class="active"';
       }?>
@@ -88,46 +89,13 @@
         >
         <a href="programstudi">Program Studi</a>
       </li>
-      <li>
-        <a href="pages/widgets/cards/colored.html">Mata Kuliah</a>
-      </li>
-      <li>
-        <a href="javascript:void(0);" class="menu-toggle">
-          <span>Cards</span>
-        </a>
-        <ul class="ml-menu">
-          <li>
-            <a href="pages/widgets/cards/no-header.html">Tahun Akademik</a>
-          </li>
-          <li>
-            <a href="pages/widgets/cards/basic.html">Program Studi</a>
-          </li>
-          <li>
-            <a href="pages/widgets/cards/colored.html">Mata Kuliah</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:void(0);" class="menu-toggle">
-          <span>Infobox</span>
-        </a>
-        <ul class="ml-menu">
-          <li>
-            <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-          </li>
-          <li>
-            <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-          </li>
-          <li>
-            <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-          </li>
-          <li>
-            <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-          </li>
-          <li>
-            <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-          </li>
-        </ul>
+      <li
+      <?php
+      if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
+        echo 'class="active"';
+      }?>
+      >
+        <a href="matakuliah">Mata Kuliah</a>
       </li>
     </ul>
   </li>
