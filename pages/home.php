@@ -3,20 +3,16 @@ require_once('assets/lib/connection.php');
 
 $database = new Database();
 $db = $database->getConnection();
-$query = "SELECT * FROM twit";
-$stmt = $db->prepare($query);
-$stmt->execute();
-$jumlah_twit = $stmt->rowCount();
 
-$query = "SELECT keywords,count(*) as jumlah FROM `twit` GROUP BY keywords";
+$query = "SELECT *  FROM `dosen` WHERE kontak = '0' ";
 $stmt = $db->prepare($query);
 $stmt->execute();
-$jumlah_keywords = $stmt->rowCount();
+$jumlah_dosen_belum_ada_kontak = $stmt->rowCount();
 
-$query = "SELECT screen_name,count(*) as jumlah FROM `twit` GROUP BY screen_name";
+$query = "SELECT * FROM `dosen`";
 $stmt = $db->prepare($query);
 $stmt->execute();
-$jumlah_users = $stmt->rowCount();
+$jumlah_dosen = $stmt->rowCount();
 
 $query = "SELECT text,count(*) jumlah FROM `twit` group by text";
 $stmt = $db->prepare($query);
@@ -27,45 +23,147 @@ $jumlah_twit_unik = $stmt->rowCount();
 
 
 <div class="block-header">
-  <h2>HOME</h2>
+  <h2>DOSEN</h2>
 </div>
 <div class="row clearfix">
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box bg-pink hover-expand-effect">
+    <div class="info-box bg-teal hover-expand-effect">
       <div class="icon">
-        <i class="material-icons">forum</i>
+        <i class="material-icons">school</i>
         <!-- <i class="material-icons">playlist_add_check</i> -->
       </div>
       <div class="content">
-        <div class="text">TWIT</div>
-        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_twit ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_twit ?></div>
+        <div class="text">JUMLAH DOSEN</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen ?></div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box bg-cyan hover-expand-effect">
+    <div class="info-box bg-green hover-expand-effect">
       <div class="icon">
-        <i class="material-icons">help</i>
+        <i class="material-icons">do_not_disturb_off</i>
       </div>
       <div class="content">
-        <div class="text">KATA KUNCI</div>
-        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_keywords ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_keywords ?></div>
+        <div class="text">BELUM ADA KONTAK</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen_belum_ada_kontak ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen_belum_ada_kontak ?></div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="info-box bg-light-green hover-expand-effect">
       <div class="icon">
-        <i class="material-icons">comment</i>
+        <i class="material-icons">highlight_off</i>
       </div>
       <div class="content">
-        <div class="text">TWIT UNIK</div>
+        <div class="text">BELUM ADA PENGAJAR</div>
         <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_twit_unik ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_twit_unik ?></div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box bg-orange hover-expand-effect">
+    <div class="info-box bg-lime hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">person_add</i>
+      </div>
+      <div class="content">
+        <div class="text">USERS</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_users ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_users ?></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block-header">
+  <h2>UJIAN</h2>
+</div>
+<div class="row clearfix">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-red hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">school</i>
+        <!-- <i class="material-icons">playlist_add_check</i> -->
+      </div>
+      <div class="content">
+        <div class="text">JUMLAH DOSEN</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-indigo hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">do_not_disturb_off</i>
+      </div>
+      <div class="content">
+        <div class="text">BELUM ADA KONTAK</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen_belum_ada_kontak ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen_belum_ada_kontak ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-purple hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">highlight_off</i>
+      </div>
+      <div class="content">
+        <div class="text">BELUM ADA PENGAJAR</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_twit_unik ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_twit_unik ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-deep-purple hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">person_add</i>
+      </div>
+      <div class="content">
+        <div class="text">USERS</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_users ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_users ?></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block-header">
+  <h2>DOSEN</h2>
+</div>
+<div class="row clearfix">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-red hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">school</i>
+        <!-- <i class="material-icons">playlist_add_check</i> -->
+      </div>
+      <div class="content">
+        <div class="text">JUMLAH DOSEN</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-indigo hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">do_not_disturb_off</i>
+      </div>
+      <div class="content">
+        <div class="text">BELUM ADA KONTAK</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_dosen_belum_ada_kontak ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_dosen_belum_ada_kontak ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-purple hover-expand-effect">
+      <div class="icon">
+        <i class="material-icons">highlight_off</i>
+      </div>
+      <div class="content">
+        <div class="text">BELUM ADA PENGAJAR</div>
+        <div class="number count-to" data-from="0" data-to="<?php echo $jumlah_twit_unik ?>" data-speed="1000" data-fresh-interval="20"><?php echo $jumlah_twit_unik ?></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-deep-purple hover-expand-effect">
       <div class="icon">
         <i class="material-icons">person_add</i>
       </div>

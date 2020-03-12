@@ -1,8 +1,21 @@
+<?php
+require_once('assets/lib/connection.php');
+
+$database = new Database();
+$db = $database->getConnection();
+$query = "SELECT * FROM tahunakademik ORDER by created_at DESC LIMIT 1";
+$stmt = $db->prepare($query);
+$stmt->execute();
+if($stmt->rowCount()>0){
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  $tahun_semester = $row["tahun"]." ".$row["semester"];
+}
+?>
 <div class="container-fluid">
     <div class="navbar-header">
         <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
         <a href="javascript:void(0);" class="bars"></a>
-        <a class="navbar-brand" href="index.html">FTI BJB - APLIKASI MANAJEMEN</a>
+        <a class="navbar-brand" href="index.html">FTI BJB - <?php echo $tahun_semester ?></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">

@@ -58,6 +58,18 @@ if(isset($_GET['p'])){
 			case 'kelasupdate':
 				include "pages/kelas/kelasupdate.php";
 				break;
+			case 'jadwal':
+				include "pages/jadwal/jadwalread.php";
+				break;
+			case 'jadwalcreate':
+				include "pages/jadwal/jadwalcreate.php";
+				break;
+			case 'jadwalupdate':
+				include "pages/jadwal/jadwalupdate.php";
+				break;
+			case 'jadwalpilih':
+				include "pages/jadwal/jadwalpilih.php";
+				break;
 
 				//end Admin
 

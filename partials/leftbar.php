@@ -39,10 +39,11 @@
         <a href="home">
           <i class="material-icons">home</i>
           <span>Home</span>
+          <!-- <span class="badge">1</span> -->
         </a>
       </li>
-      <li <?php if($page=="jadwalkuliah" || $page=="jadwalkuliahpilih") echo 'class="active"'; ?>>
-        <a href="jadwalkuliah">
+      <li <?php if($page=="jadwal" || $page=="jadwalpilih") echo 'class="active"'; ?>>
+        <a href="jadwalpilih">
           <i class="material-icons">chrome_reader_mode</i>
           <span>Jadwal Kuliah</span>
         </a>
