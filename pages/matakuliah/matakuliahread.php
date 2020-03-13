@@ -48,7 +48,7 @@ $db = $database->getConnection();
             </tfoot>
             <tbody>
               <?php
-              $selectQuery = "SELECT m.*,p.prodi FROM matakuliah m LEFT JOIN programstudi p ON m.id_prodi = p.id ORDER by p.id, m.semester, m.mata_kuliah";
+              $selectQuery = "SELECT m.*,p.prodi FROM matakuliah m LEFT JOIN programstudi p ON m.id_programstudi = p.id ORDER by p.id, m.semester, m.mata_kuliah";
               $stmt = $db->prepare($selectQuery);
               $stmt->execute();
               if($stmt->rowCount()>0){

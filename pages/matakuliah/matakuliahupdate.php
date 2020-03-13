@@ -19,7 +19,7 @@ if(isset($_POST['simpan'])){
   $singkatan=htmlspecialchars(strip_tags($singkatan));
 
 
-  $checkQuery = "SELECT * FROM matakuliah WHERE mata_kuliah=? AND id_prodi=? AND id!=?";
+  $checkQuery = "SELECT * FROM matakuliah WHERE mata_kuliah=? AND id_programstudi=? AND id!=?";
   $stmt = $db->prepare($checkQuery);
   $stmt->bindParam(1, $mata_kuliah);
   $stmt->bindParam(2, $program_studi);
@@ -38,7 +38,7 @@ if(isset($_POST['simpan'])){
     $pesanError[] = "Data <strong>Kode Mata Kuliah</strong> sama sudah ada";
   }
 
-  $checkQuery = "SELECT * FROM matakuliah WHERE singkatan=? AND id_prodi=? AND id!=?";
+  $checkQuery = "SELECT * FROM matakuliah WHERE singkatan=? AND id_programstudi=? AND id!=?";
   $stmt = $db->prepare($checkQuery);
   $stmt->bindParam(1, $singkatan);
   $stmt->bindParam(2, $program_studi);
@@ -59,7 +59,7 @@ if(isset($_POST['simpan'])){
       <?php
     }
   }else{
-    $query = "UPDATE matakuliah SET kode_mata_kuliah=?,mata_kuliah=?,singkatan=?,id_prodi=?,semester=? WHERE id=?";
+    $query = "UPDATE matakuliah SET kode_mata_kuliah=?,mata_kuliah=?,singkatan=?,id_programstudi=?,semester=? WHERE id=?";
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(1, $kode_mata_kuliah);
@@ -120,14 +120,14 @@ if($stmt->rowCount()>0){
                       <select class="form-control show-tick" name="program_studi">
                         <option value="">-- Please select --</option>
                         <?php
-                        $selectQuery = "SELECT p.id AS id_prodi_select,p.prodi FROM programstudi p ORDER BY p.prodi";
+                        $selectQuery = "SELECT p.id AS id_programstudi_select,p.prodi FROM programstudi p ORDER BY p.prodi";
                         $stmt = $db->prepare($selectQuery);
                         $stmt->execute();
                         if($stmt->rowCount()>0){
                           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                             extract($row);
                             ?>
-                            <option value="<?php echo $id_prodi_select ?>" <?php if($id_prodi==$id_prodi_select) echo "selected" ?>><?php echo $prodi ?></option>
+                            <option value="<?php echo $id_programstudi_select ?>" <?php if($id_programstudi==$id_programstudi_select) echo "selected" ?>><?php echo $prodi ?></option>
                             <?php
                           }
                         }

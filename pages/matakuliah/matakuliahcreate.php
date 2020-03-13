@@ -18,7 +18,7 @@ if(isset($_POST['simpan'])){
   $singkatan=htmlspecialchars(strip_tags($singkatan));
 
 
-  $checkQuery = "SELECT * FROM matakuliah WHERE mata_kuliah=? AND id_prodi=?";
+  $checkQuery = "SELECT * FROM matakuliah WHERE mata_kuliah=? AND id_programstudi=?";
   $stmt = $db->prepare($checkQuery);
   $stmt->bindParam(1, $mata_kuliah);
   $stmt->bindParam(2, $program_studi);
@@ -35,7 +35,7 @@ if(isset($_POST['simpan'])){
     $pesanError[] = "Data <strong>Kode Mata Kuliah</strong> sama sudah ada";
   }
 
-  $checkQuery = "SELECT * FROM matakuliah WHERE singkatan=? AND id_prodi=?";
+  $checkQuery = "SELECT * FROM matakuliah WHERE singkatan=? AND id_programstudi=?";
   $stmt = $db->prepare($checkQuery);
   $stmt->bindParam(1, $singkatan);
   $stmt->bindParam(2, $program_studi);
@@ -55,7 +55,7 @@ if(isset($_POST['simpan'])){
       <?php
     }
   }else{
-    $query = "INSERT INTO matakuliah (kode_mata_kuliah,mata_kuliah,singkatan,id_prodi,semester) VALUES (?,?,?,?,?)";
+    $query = "INSERT INTO matakuliah (kode_mata_kuliah,mata_kuliah,singkatan,id_programstudi,semester) VALUES (?,?,?,?,?)";
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(1, $kode_mata_kuliah);
