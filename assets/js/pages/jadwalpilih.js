@@ -1,8 +1,7 @@
 $(function () {
 
-  generateMatakuliah();
   generateJam();
-  // cekHari();
+
 
   $('.timepicker').bootstrapMaterialDatePicker({
     format: 'HH:mm',
@@ -91,7 +90,7 @@ $(document).on('click', '.delete-button', function(){
 function generateJam(){
 
   var jamSelector = '#id_jam';
-  var jenis_kelas = $("#jenis_kelas").val();
+  var jenis_kelas = $("input[name='jenis_kelas']:checked").val();
   var data_send = {jenis_kelas:jenis_kelas};
   var datas = JSON.stringify(data_send);
 
@@ -103,10 +102,16 @@ function generateJam(){
     contentType : 'application/json',
     data : datas,
     success : function(result){
+      console.log(jenis_kelas);
       $(jamSelector).html(result);
+      // x=[];
+      // $(jamSelector).empty();
+      // $.each(result.records, function(i,n) {x.push(n);});
+      // $.each(x, function (id, entry) {
+      //   $(jamSelector).append($("<option></option>").val(entry.id).html(entry.jam_mulai+" - "+entry.jam_selesai));
+      // });
       $(jamSelector).selectpicker('refresh');
       $(jamSelector).selectpicker('render');
-
     },
     error: function(xhr, resp, text){
       bootbox.alert("Ambil data gagal");
@@ -118,8 +123,7 @@ function generateJam(){
 }
 
 function cekHari(){
-  var jenis_kelas = $("#jenis_kelas").val();
-  var hari = $("#posted_hari").val();
+  var jenis_kelas = $("input[name='jenis_kelas']:checked").val();
   if(jenis_kelas=="NON REG"){
     $(".reg").attr('checked', false);
     $(".reg").attr('disabled', true);
@@ -135,16 +139,6 @@ function cekHari(){
     $(".reg").attr('disabled', false);
     $(".reg").css('opacity', '.1');
   }
-
-  console.log(hari);
-
-  if(hari=="SENIN") document.getElementById("radio_senin").checked = true;
-  if(hari=="SELASA") document.getElementById("radio_selasa").checked = true;
-  if(hari=="RABU") document.getElementById("radio_rabu").checked = true;
-  if(hari=="KAMIS") document.getElementById("radio_kamis").checked = true;
-  if(hari=="JUMAT") document.getElementById("radio_jumat").checked = true;
-  if(hari=="SABTU") document.getElementById("radio_sabtu").checked = true;
-  if(hari=="SABTU II") document.getElementById("radio_sabtu2").checked = true;
 }
 
 
