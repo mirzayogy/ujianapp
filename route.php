@@ -70,6 +70,12 @@ if(isset($_GET['p'])){
 			case 'jadwalpilih':
 				include "pages/jadwal/jadwalpilih.php";
 				break;
+			case 'jadwalperdosen':
+				include "pages/jadwal/jadwalperdosen.php";
+				break;
+			case 'jadwalperkelas':
+				include "pages/jadwal/jadwalperkelas.php";
+				break;
 
 				//end Admin
 

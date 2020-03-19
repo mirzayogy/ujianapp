@@ -42,11 +42,25 @@
           <!-- <span class="badge">1</span> -->
         </a>
       </li>
-      <li <?php if($page=="jadwal" || $page=="jadwalpilih") echo 'class="active"'; ?>>
-        <a href="jadwalpilih">
+      <li <?php if($page=="jadwal" || $page=="jadwalpilih" || $page=="jadwalperdosen" || $page=="jadwalperkelas") echo 'class="active"'; ?>>
+        <a href="javascript:void(0);" class="menu-toggle">
           <i class="material-icons">chrome_reader_mode</i>
           <span>Jadwal Kuliah</span>
         </a>
+        <ul class="ml-menu">
+          <li <?php if($page=="jadwalperdosen") {
+            echo 'class="active"'; }?>>
+            <a href="jadwalperdosen">
+              Per Dosen
+            </a>
+          </li>
+          <li <?php if($page=="jadwalperkelas") {
+            echo 'class="active"'; }?>>
+            <a href="jadwalperkelas">
+              Per Kelas
+            </a>
+          </li>
+        </ul>
       </li>
       <li <?php if(
         $page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate" ||
@@ -55,41 +69,41 @@
         $page=="dosen" || $page=="dosencreate" || $page=="dosenupdate" ||
         $page=="kelas" || $page=="kelascreate" || $page=="kelasupdate"
       ) { echo 'class="active"';  }?> >
-        <a href="javascript:void(0);" class="menu-toggle">
-          <i class="material-icons">widgets</i>
-          <span>Masters</span>
-        </a>
-        <ul class="ml-menu">
-          <li <?php if($page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate") {
-            echo 'class="active"'; }?>>
-            <a href="tahunakademik">
-              Tahun Akademik
-            </a>
-          </li>
-          <li <?php if($page=="kelas" || $page=="kelascreate" || $page=="kelasupdate") {
-            echo 'class="active"'; }?>>
-            <a href="kelas">
-              Kelas
-            </a>
-          </li>
-          <li  <?php if($page=="dosen" || $page=="dosencreate" || $page=="dosenupdate") {
-            echo 'class="active"'; }?>   >
-            <a href="dosen">Dosen</a>
-          </li>
-          <li <?php if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
-            echo 'class="active"'; }?> >
-            <a href="programstudi">
-              Program Studi
-            </a>
-          </li>
-          <li <?php if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
-            echo 'class="active"'; }?>  >
-            <a href="matakuliah">Mata Kuliah</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+      <a href="javascript:void(0);" class="menu-toggle">
+        <i class="material-icons">widgets</i>
+        <span>Masters</span>
+      </a>
+      <ul class="ml-menu">
+        <li <?php if($page=="tahunakademik" || $page=="tahunakademikcreate" || $page=="tahunakademikupdate") {
+          echo 'class="active"'; }?>>
+          <a href="tahunakademik">
+            Tahun Akademik
+          </a>
+        </li>
+        <li <?php if($page=="kelas" || $page=="kelascreate" || $page=="kelasupdate") {
+          echo 'class="active"'; }?>>
+          <a href="kelas">
+            Kelas
+          </a>
+        </li>
+        <li  <?php if($page=="dosen" || $page=="dosencreate" || $page=="dosenupdate") {
+          echo 'class="active"'; }?>   >
+          <a href="dosen">Dosen</a>
+        </li>
+        <li <?php if($page=="programstudi" || $page=="programstudicreate" || $page=="programstudiupdate") {
+          echo 'class="active"'; }?> >
+          <a href="programstudi">
+            Program Studi
+          </a>
+        </li>
+        <li <?php if($page=="matakuliah" || $page=="matakuliahcreate" || $page=="matakuliahupdate") {
+          echo 'class="active"'; }?>  >
+          <a href="matakuliah">Mata Kuliah</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
 <!-- #Menu -->
 <!-- Footer -->
 <div class="legal">
